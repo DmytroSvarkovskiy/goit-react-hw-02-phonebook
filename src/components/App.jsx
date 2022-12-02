@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import { createGlobalStyle } from 'styled-components';
+import { ContactForm } from './ContactForm/ContactForm';
 const GlobalStyle = createGlobalStyle`
   ul,h1,h2,h3,h4,h5,h6,li{list-style:none;margin:0;padding:0;};
   body{
-    height:100vh;
+    height:80vh;
    display: flex;
    justify-content:center;
    align-items:center;
@@ -12,14 +13,16 @@ const GlobalStyle = createGlobalStyle`
 `;
 export class App extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    contacts: [],
+    name: '',
+    number: '',
   };
   render() {
     return (
       <div>
         <GlobalStyle />
+        <h1>PhoneBook</h1>
+        <ContactForm />
       </div>
     );
   }
