@@ -13,16 +13,27 @@ const GlobalStyle = createGlobalStyle`
 `;
 export class App extends Component {
   state = {
-    contacts: [],
-    name: '',
-    number: '',
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
+  };
+  addContact = obj => {
+    if (this.state.contacts.find(people => people.name === obj.name)) {
+      alert(`${obj.name} is already in contact`);
+    } else {
+      this.setState(prevState => ({ contacts: [obj, ...prevState.contacts] }));
+    }
   };
   render() {
     return (
       <div>
         <GlobalStyle />
         <h1>PhoneBook</h1>
-        <ContactForm />
+        <ContactForm addContact={this.addContact} />
       </div>
     );
   }
