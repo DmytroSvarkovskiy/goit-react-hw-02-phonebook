@@ -6,7 +6,9 @@ export const Contaclist = ({ listAbonents, onDeleteClick }) => {
       {listAbonents.map(({ id, name, number }) => (
         <Item key={id}>
           {name}: {number}
-          <Button onClick={() => onDeleteClick(id)}>Delete</Button>
+          <Button type="button" onClick={() => onDeleteClick(id)}>
+            Delete
+          </Button>
         </Item>
       ))}
     </List>
