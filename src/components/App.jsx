@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 const GlobalStyle = createGlobalStyle`
   ul,h1,h2,h3,h4,h5,h6,li,p{list-style:none;margin:0;padding:0;};
   body{
-    height:80vh;
+    height:50%;
    display: flex;
    justify-content:center;
    align-items:center;
@@ -24,13 +24,8 @@ export class App extends Component {
     ],
     filter: '',
   };
-  addContact = e => {
-    e.preventDefault();
-    const newContact = {
-      id: nanoid(3),
-      name: e.target.elements.name.value,
-      number: e.target.elements.number.value,
-    };
+  addContact = (values, { resetForm }) => {
+    const newContact = { id: nanoid(3), ...values };
     const newContactName = newContact.name.toLowerCase();
     if (
       this.state.contacts.find(
@@ -42,6 +37,7 @@ export class App extends Component {
       this.setState(prevState => ({
         contacts: [newContact, ...prevState.contacts],
       }));
+      resetForm();
     }
   };
   render() {

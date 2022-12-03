@@ -1,17 +1,18 @@
-import { Form, Field } from 'formik';
+import { Form, Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 export const FormWr = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  width: 430px;
-  height: 180px;
+  /* gap: 20px; */
+  width: 400px;
+  min-height: 200px;
   border: 1px solid;
   padding: 15px;
   border-radius: 10px;
 `;
 export const Input = styled(Field)`
   height: 25px;
+  margin-bottom: 12px;
   border-radius: 5px;
   outline: none;
   border: 1px solid gray;
@@ -25,6 +26,7 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 12px;
 `;
 export const Button = styled.button`
   height: 25px;
@@ -37,4 +39,7 @@ export const Button = styled.button`
   }
 
   transition: background-color 0.4s, color 0.4s;
+`;
+export const Error = styled(ErrorMessage)`
+  font-size: 15px;
 `;
