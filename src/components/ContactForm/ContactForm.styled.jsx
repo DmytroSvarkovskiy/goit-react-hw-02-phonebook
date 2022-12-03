@@ -3,15 +3,16 @@ import styled from 'styled-components';
 export const FormWr = styled(Form)`
   display: flex;
   flex-direction: column;
-  /* gap: 20px; */
   width: 400px;
   min-height: 200px;
   border: 1px solid;
   padding: 15px;
   border-radius: 10px;
+  margin: 20px 0;
 `;
 export const Input = styled(Field)`
-  height: 25px;
+  height: 30px;
+  font-size: 18px;
   margin-bottom: 12px;
   border-radius: 5px;
   outline: none;
@@ -29,7 +30,9 @@ export const Label = styled.label`
   margin-bottom: 12px;
 `;
 export const Button = styled.button`
-  height: 25px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   border-radius: 5px;
   border: none;

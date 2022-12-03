@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 const GlobalStyle = createGlobalStyle`
   ul,h1,h2,h3,h4,h5,h6,li,p{list-style:none;margin:0;padding:0;};
   body{
-    height:50%;
+   margin-top:50px;
    display: flex;
    justify-content:center;
    align-items:center;
@@ -24,6 +24,11 @@ export class App extends Component {
     ],
     filter: '',
   };
+
+  // visibleContacts = this.state.contacts.filter(abonent =>
+  //   abonent.name.toLowerCase().includes(this.state.filter)
+  // );
+
   addContact = (values, { resetForm }) => {
     const newContact = { id: nanoid(3), ...values };
     const newContactName = newContact.name.toLowerCase();
@@ -40,15 +45,26 @@ export class App extends Component {
       resetForm();
     }
   };
+
+  onFilterChange = e => {
+    const filterWord = e.target.value.toLowerCase();
+    this.setState({ filter: filterWord });
+  };
+
   render() {
+    const { value } = this.state;
+    const visibleContacts = this.state.contacts.filter(abonent =>
+      abonent.name.toLowerCase().includes(this.state.filter)
+    );
+
     return (
       <div>
         <GlobalStyle />
         <h1>PhoneBook</h1>
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
-        <Filter />
-        <Contaclist listAbonents={this.state.contacts} />
+        <Filter value={value} onFilterChange={this.onFilterChange} />
+        <Contaclist listAbonents={visibleContacts} />
       </div>
     );
   }

@@ -1,9 +1,9 @@
-import { WrapperFiler } from './Filter.styled';
-export const Filter = () => {
+import { WrapperFiler, FilterInput, FilterP } from './Filter.styled';
+export const Filter = ({ onFilterChange, value }) => {
   return (
     <WrapperFiler>
-      <p>Find contacts by name</p>
-      <input type="text" />
+      <FilterP>Find contacts by name</FilterP>
+      <FilterInput type="text" value={value} onChange={onFilterChange} />
     </WrapperFiler>
   );
 };
