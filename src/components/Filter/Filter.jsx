@@ -1,8 +1,9 @@
+import { WrapperFiler } from './Filter.styled';
 export const Filter = () => {
   return (
-    <div>
+    <WrapperFiler>
       <p>Find contacts by name</p>
       <input type="text" />
-    </div>
+    </WrapperFiler>
   );
 };
