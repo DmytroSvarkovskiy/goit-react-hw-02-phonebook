@@ -1,6 +1,9 @@
 import { Component } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { ContactForm } from './ContactForm/ContactForm';
+import { Contaclist } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
+import { nanoid } from 'nanoid';
 const GlobalStyle = createGlobalStyle`
   ul,h1,h2,h3,h4,h5,h6,li{list-style:none;margin:0;padding:0;};
   body{
@@ -21,11 +24,24 @@ export class App extends Component {
     ],
     filter: '',
   };
-  addContact = obj => {
-    if (this.state.contacts.find(people => people.name === obj.name)) {
-      alert(`${obj.name} is already in contact`);
+  addContact = e => {
+    e.preventDefault();
+    const newContact = {
+      id: nanoid(3),
+      name: e.target.elements.name.value,
+      number: e.target.elements.number.value,
+    };
+    const newContactName = newContact.name.toLowerCase();
+    if (
+      this.state.contacts.find(
+        people => people.name.toLowerCase() === newContactName
+      )
+    ) {
+      alert(`${newContact.name} is already in contact`);
     } else {
-      this.setState(prevState => ({ contacts: [obj, ...prevState.contacts] }));
+      this.setState(prevState => ({
+        contacts: [newContact, ...prevState.contacts],
+      }));
     }
   };
   render() {
@@ -33,7 +49,10 @@ export class App extends Component {
       <div>
         <GlobalStyle />
         <h1>PhoneBook</h1>
-        <ContactForm addContact={this.addContact} />
+        <ContactForm onSubmit={this.addContact} />
+        <h2>Contacts</h2>
+        <Filter />
+        <Contaclist listAbonents={this.state.contacts} />
       </div>
     );
   }

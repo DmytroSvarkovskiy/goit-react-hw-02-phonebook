@@ -2,30 +2,22 @@ import { Component } from 'react';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { FormWr, Input, Label, Button } from './ContactForm.styled';
-const id = nanoid(3);
+
 export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
   };
+  id = nanoid(3);
   onInputChange = e => {
     this.setState(prevstate => {
       prevstate[e.target.name] = [e.target.value];
     });
   };
-  onSubmit = e => {
-    e.preventDefault();
-    const newContact = {
-      id: id,
-      name: e.target.elements.name.value,
-      number: e.target.elements.number.value,
-    };
-    this.props.addContact(newContact);
-  };
   render() {
     return (
       <Formik>
-        <FormWr onSubmit={this.onSubmit}>
+        <FormWr onSubmit={this.props.onSubmit}>
           <Label>
             Name
             <Input
