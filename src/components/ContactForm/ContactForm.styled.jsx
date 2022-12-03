@@ -22,6 +22,7 @@ export const Input = styled(Field)`
     box-shadow: rgba(129, 177, 219, 0.48) 6px 2px 16px 0px,
       rgba(245, 218, 218, 0.8) -6px -2px 16px 0px;
   }
+  transition: box-shadow cubic-bezier(0.17, 0.67, 0.86, 0.57) 300ms;
 `;
 export const Label = styled.label`
   display: flex;
