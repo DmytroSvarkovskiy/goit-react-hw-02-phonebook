@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import { FormWr, Input, Label, Button, Error } from './ContactForm.styled';
 const schema = yup.object().shape({
@@ -46,4 +47,7 @@ export const ContactForm = ({ onSubmit }) => {
       </FormWr>
     </Formik>
   );
+};
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

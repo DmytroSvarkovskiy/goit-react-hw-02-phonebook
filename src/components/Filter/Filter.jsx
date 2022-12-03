@@ -1,4 +1,5 @@
 import { WrapperFiler, FilterInput, FilterP } from './Filter.styled';
+import PropTypes from 'prop-types';
 export const Filter = ({ onFilterChange, value }) => {
   return (
     <WrapperFiler>
@@ -6,4 +7,8 @@ export const Filter = ({ onFilterChange, value }) => {
       <FilterInput type="text" value={value} onChange={onFilterChange} />
     </WrapperFiler>
   );
+};
+Filter.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
 };
