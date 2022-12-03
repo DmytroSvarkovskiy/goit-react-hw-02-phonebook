@@ -25,10 +25,6 @@ export class App extends Component {
     filter: '',
   };
 
-  // visibleContacts = this.state.contacts.filter(abonent =>
-  //   abonent.name.toLowerCase().includes(this.state.filter)
-  // );
-
   addContact = (values, { resetForm }) => {
     const newContact = { id: nanoid(3), ...values };
     const newContactName = newContact.name.toLowerCase();
@@ -44,6 +40,11 @@ export class App extends Component {
       }));
       resetForm();
     }
+  };
+  deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
   };
 
   onFilterChange = e => {
@@ -64,7 +65,10 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
         <Filter value={value} onFilterChange={this.onFilterChange} />
-        <Contaclist listAbonents={visibleContacts} />
+        <Contaclist
+          listAbonents={visibleContacts}
+          onDeleteClick={this.deleteContact}
+        />
       </div>
     );
   }
