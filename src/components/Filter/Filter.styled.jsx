@@ -2,6 +2,7 @@ import styled from 'styled-components';
 export const WrapperFiler = styled.div`
   font-size: 20px;
   margin: 20px 0;
+  width: 100%;
 `;
 export const FilterInput = styled.input`
   height: 30px;
@@ -12,4 +13,5 @@ export const FilterInput = styled.input`
 export const FilterP = styled.p`
   font-weight: 500;
   margin-bottom: 20px;
+  width: 100%;
 `;
