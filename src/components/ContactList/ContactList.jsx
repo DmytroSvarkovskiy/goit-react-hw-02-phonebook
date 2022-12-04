@@ -15,7 +15,7 @@ export const Contaclist = ({ listAbonents, onDeleteClick }) => {
   );
 };
 Contaclist.propTypes = {
-  onDeleteClick: PropTypes.func,
+  onDeleteClick: PropTypes.func.isRequired,
   listAbonents: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
