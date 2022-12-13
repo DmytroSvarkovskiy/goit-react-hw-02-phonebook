@@ -53,7 +53,7 @@ export class App extends Component {
   };
 
   render() {
-    const { value } = this.state;
+    const { filter } = this.state;
     const { addContact, onFilterChange, deleteContact } = this;
     const visibleContacts = this.state.contacts.filter(abonent =>
       abonent.name.toLowerCase().includes(this.state.filter)
@@ -65,7 +65,7 @@ export class App extends Component {
         <h1>PhoneBook</h1>
         <ContactForm onSubmit={addContact} />
         <h2>Contacts</h2>
-        <Filter value={value} onFilterChange={onFilterChange} />
+        <Filter value={filter} onFilterChange={onFilterChange} />
         <Contaclist
           listAbonents={visibleContacts}
           onDeleteClick={deleteContact}
